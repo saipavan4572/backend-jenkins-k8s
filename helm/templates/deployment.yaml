@@ -26,7 +26,8 @@ spec:
       containers:
       - name: backend
         ## replace with your own image id created in ECR.
-        image: 315069654700.dkr.ecr.us-east-1.amazonaws.com/expense-backend:{{ .Values.deployment.imageVersion }}
+        #image: 315069654700.dkr.ecr.us-east-1.amazonaws.com/expense-backend:{{ .Values.deployment.imageVersion }}
+        image: 533267158693.dkr.ecr.us-east-1.amazonaws.com/expense-backend:{{ .Values.deployment.imageVersion }}
         envFrom:
         - configMapRef:
             name: backend

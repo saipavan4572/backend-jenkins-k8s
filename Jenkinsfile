@@ -68,20 +68,21 @@ pipeline {
                 """
             }
         }
-        // stage('Deploy'){
-        //     steps{
-        //         sh """
-        //             aws eks update-kubeconfig --region us-east-1 --name expense-dev
-        //             cd helm
-        //             sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
-        //             helm install backend .
-        //             # helm install frontend . ---> this can be used for the 1st time installing the frontend helm
-        //             # helm upgrade backend .    -- this can be used after helm install - 2nd time onwards.
-        //         """
-        //     }
-        //     // helm install backend . ---> use for the 1st time installation
-        //     // helm upgrade backend . ---> from the next installation onwards(after 1st installation)
-        // }
+        stage('Deploy'){
+            steps{
+                sh """
+                    aws eks update-kubeconfig --region us-east-1 --name expense-dev
+                    cd helm
+                    sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
+                    helm install backend .
+                    # helm install frontend . ---> this can be used for the 1st time installing the frontend helm
+                    # helm upgrade backend .    -- this can be used after helm install - 2nd time onwards.
+                """
+            }
+            // sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml ---> it will replace "IMAGE_VERSION" string with the value in {appVersion} inside values.yaml file.
+            // helm install backend . ---> use for the 1st time installation
+            // helm upgrade backend . ---> from the next installation onwards(after 1st installation)
+        }
 
 /*         stage('Nexus Artifact Upload'){
             steps{
