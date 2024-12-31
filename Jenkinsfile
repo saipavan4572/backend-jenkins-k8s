@@ -8,12 +8,13 @@ def configMap = [
     project: "expense"
 ]
 
-pipelineDecision.decidePipeline(configMap)
+// pipelineDecision.decidePipeline(configMap)
 
-/* if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){
+// condition can be used for multi-branch pipeline
+if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){
     // calling a method in jenkins-shared-library app/module
     pipelineDecision.decidePipeline(configMap)
 }
 else{
     echo "Proceed with CR or NON-PROD pipeline"
-} */
+}
